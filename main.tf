@@ -19,6 +19,13 @@ resource "aws_security_group" "main" {
     cidr_blocks = [var.vpc_cidr_block, var.WORKSTATION_IP]
   }
 
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "${var.env}-rabbitmq"
   }
