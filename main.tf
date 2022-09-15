@@ -48,7 +48,8 @@ resource "null_resource" "ansible-apply" {
       password = local.ssh_password
     }
     inline = [
-      "ansible-pull -i localhost, -U https://github.com/raghudevopsb66/roboshop-mutable-ansible -e HOSTS=localhost -e APP_COMPONENT_ROLE=rabbitmq -e ENV=${var.env} -e RABBITMQ_PASSWORD=${local.password}"
+      //"ansible-pull -i localhost, -U https://github.com/raghudevopsb66/roboshop-mutable-ansible -e HOSTS=localhost -e APP_COMPONENT_ROLE=rabbitmq -e ENV=${var.env} -e RABBITMQ_PASSWORD=${local.password}"
+      "uptime"
     ]
   }
 }
