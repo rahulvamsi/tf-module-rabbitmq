@@ -41,6 +41,9 @@ resource "aws_ec2_tag" "name-tag" {
 }
 
 resource "null_resource" "ansible-apply" {
+  triggers = {
+    always = timestamp()
+  }
   provisioner "remote-exec" {
     connection {
       host = aws_spot_instance_request.rabbitmq.private_ip
