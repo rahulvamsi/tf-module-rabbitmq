@@ -19,7 +19,7 @@ resource "aws_security_group" "main" {
     cidr_blocks = [var.vpc_cidr_block, var.WORKSTATION_IP]
   }
 
-  ingress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
