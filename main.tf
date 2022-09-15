@@ -33,3 +33,11 @@ resource "aws_spot_instance_request" "rabbitmq" {
     Name = "rabbitmq-${var.env}"
   }
 }
+
+resource "aws_ec2_tag" "name-tag" {
+  resource_id = aws_spot_instance_request.rabbitmq.spot_instance_id
+  key         = "Name"
+  value       = "rabbitmq-${var.env}"
+}
+
+
