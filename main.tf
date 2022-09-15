@@ -46,10 +46,9 @@ resource "null_resource" "ansible-apply" {
   }
   provisioner "remote-exec" {
     connection {
-      host = aws_spot_instance_request.rabbitmq.private_ip
-      user = local.ssh_username
-      //password = local.ssh_password
-      password = "DevOps321"
+      host     = aws_spot_instance_request.rabbitmq.private_ip
+      user     = local.ssh_username
+      password = local.ssh_password
     }
     inline = [
       //"ansible-pull -i localhost, -U https://github.com/raghudevopsb66/roboshop-mutable-ansible -e HOSTS=localhost -e APP_COMPONENT_ROLE=rabbitmq -e ENV=${var.env} -e RABBITMQ_PASSWORD=${local.password}"
