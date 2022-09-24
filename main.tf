@@ -37,6 +37,7 @@ resource "aws_spot_instance_request" "rabbitmq" {
   subnet_id              = element(var.db_subnets_ids, 0)
   vpc_security_group_ids = [aws_security_group.main.id]
   wait_for_fulfillment   = true
+  iam_instance_profile   = aws_iam_instance_profile.parameter-store-access.name
   tags = {
     Name = "rabbitmq-${var.env}"
   }
